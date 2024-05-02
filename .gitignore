@@ -1,2 +1,5 @@
 .venv
 .DS_Store
+.vscode
+qdrant_storage
+__pycache__

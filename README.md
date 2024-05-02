@@ -4,7 +4,13 @@ Right now this is a proof of concept for using a Vector Database as "Memory" for
 
 #### Usage:
 
+Start QDrant service:
+docker run -p 6333:6333 -p 6334:6334 \
+    -v $(pwd)/qdrant_storage:/qdrant/storage:z \
+    qdrant/qdrant
+
 encode.py: encodes the images in './data' as their RGB values
+
 upload.py: uploads the image embeddings to QDrant
 
 ##### Interesting Resources:
