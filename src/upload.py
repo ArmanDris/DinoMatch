@@ -1,6 +1,6 @@
 import numpy as np
-from qdrant_client import QdrantClient
-from qdrant_client.models import VectorParams, Distance
+from qdrant_client import QdrantClient # type: ignore
+from qdrant_client.models import VectorParams, Distance # type: ignore
 import json
 
 def upload_to_qdrant():
