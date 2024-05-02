@@ -29,7 +29,7 @@ def upload_to_qdrant():
         batch_size=256,  # How many vectors will be uploaded in a single request?
     )
 
-    print("Uploaded " + str(vectors.shape[0]) + " vectors to QDrant")
+    print(" - Uploaded " + str(vectors.shape[0]) + " vectors to QDrant")
 
 if __name__ == "__main__":
     upload_to_qdrant()

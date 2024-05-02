@@ -1,5 +1,5 @@
-from upload import upload_to_qdrant
 from embed import save_as_embeddings
+from upload import upload_to_qdrant
 
 def main():
     save_as_embeddings()
