@@ -1,19 +1,19 @@
-### Plant Classification with Qdrant
+# DemoImageEmbedder
 
 Right now this is a proof of concept for using a Vector Database as "Memory" for Agrobot
 
-#### Usage:
+## Usage:
 
 Start QDrant service:
-docker run -p 6333:6333 -p 6334:6334 \
+1. docker run -p 6333:6333 -p 6334:6334 \
     -v $(pwd)/qdrant_storage:/qdrant/storage:z \
     qdrant/qdrant
 
-encode.py: encodes the images in './data' as their RGB values
+2. python3 run.py
+    - This will encode the images as vectors and and a matching JSON file will be created with each vector's name
+    - Then the vector embeddings and their names will be uploaded to QDrant
 
-upload.py: uploads the image embeddings to QDrant
-
-##### Interesting Resources:
+## Interesting Resources:
 (Article Where the nature DeepWeeds repo comes from:
 https://www.nature.com/articles/s41598-018-38343-3)
 
