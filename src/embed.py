@@ -79,7 +79,7 @@ def save_rgb_embeddings(src_folder: str = "./data/10_Demo_Images", dst_file: str
     
     for filename in os.listdir(src_folder):
         if filename.endswith('.png'):
-            collection.add_image(filename, src_folder + '/' + filename)
+            collection.add_image(filename, os.path.join(src_folder, filename))
 
     if print_embeddings:
         collection.print()
