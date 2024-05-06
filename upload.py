@@ -8,7 +8,7 @@ from qdrant_client.models import VectorParams, Distance # type: ignore
 
 class ImportRgbEmbeddings:
     
-    def __init__(self, src_file: str = "./embeddings/RGB_embeddings.pickle"):
+    def __init__(self, src_file: str = "./data/embeddings/RGB_embeddings.pickle"):
         self.names: list[Dict[str, str]] = []
         self.list_of_nmpy_vectors: list[np.ndarray] = []
 

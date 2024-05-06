@@ -1,3 +1,4 @@
+import unittest
 from embed import save_rgb_embeddings
 from upload import upload_to_qdrant
 
@@ -7,3 +8,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    unittest.main()

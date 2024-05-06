@@ -1,26 +1,33 @@
 import unittest
-from src.embed import RgbImageEmbeddings, save_rgb_embeddings
+import os
+import numpy as np
+from embed import RgbImageEmbeddings, save_rgb_embeddings
 
-class TestEmbed(unittest.testCase):
+class TestEmbed(unittest.TestCase):
     
     def test_RgbImageEmbeddings_add_image(self):
         src_folder = "./data/10_Demo_Images"
         collection = RgbImageEmbeddings()
 
-        for filename in os.listdir():
-            if filename.ends_with(".png"):
-                collection.add_image(os.path.join(src_folder, filename))
+        for filename in os.listdir(src_folder):
+            if filename.endswith(".png"):
+                collection.add_image(filename, os.path.join(src_folder, filename))
 
-        self.assertEqual(collection.self["1.png"], np.array([0, 255, 0]), dtype=np.uint8)
-        self.assertEqual(collection.self["2.png"], np.array([0, 255, 0]), dtype=np.uint8)
-        self.assertEqual(collection.self["3.png"], np.array([0, 255, 0]), dtype=np.uint8)
-        self.assertEqual(collection.self["4.png"], np.array([255, 0, 0]), dtype=np.uint8)
-        self.assertEqual(collection.self["5.png"], np.array([255, 0, 0]), dtype=np.uint8)
-        self.assertEqual(collection.self["6.png"], np.array([0, 255, 0]), dtype=np.uint8)
-        self.assertEqual(collection.self["7.png"], np.array([255, 0, 0]), dtype=np.uint8)
-        self.assertEqual(collection.self["8.png"], np.array([0, 255, 0]), dtype=np.uint8)
-        self.assertEqual(collection.self["9.png"], np.array([0, 255, 0]), dtype=np.uint8)
-        self.assertEqual(collection.self["10.png"], np.array([0, 255, 0]), dtype=np.uint8)
+        green_embedding = np.array([0, 255, 0], dtype=np.uint8)
+        red_embedding = np.array([255, 0, 0], dtype=np.uint8)
+
+        self.assertTrue(np.array_equal(collection.data["1.png"], green_embedding))
+        self.assertTrue(np.array_equal(collection.data["2.png"], green_embedding))
+        self.assertTrue(np.array_equal(collection.data["3.png"], green_embedding))
+        self.assertTrue(np.array_equal(collection.data["4.png"], red_embedding))
+        self.assertTrue(np.array_equal(collection.data["5.png"], red_embedding))
+        self.assertTrue(np.array_equal(collection.data["6.png"], green_embedding))
+        self.assertTrue(np.array_equal(collection.data["7.png"], red_embedding))
+        self.assertTrue(np.array_equal(collection.data["8.png"], green_embedding))
+        self.assertTrue(np.array_equal(collection.data["9.png"], green_embedding))
+        self.assertTrue(np.array_equal(collection.data["10.png"], green_embedding))
+
+        # def test_RgbImageEmb
 
 if __name__ == "__main__":
     unittest.main()

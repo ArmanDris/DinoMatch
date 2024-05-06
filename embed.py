@@ -73,7 +73,7 @@ Returns:
     None
         
 """
-def save_rgb_embeddings(src_folder: str = "./data/10_Demo_Images", dst_file: str = "./embeddings/RGB_embeddings.pickle", print_embeddings: bool = False) -> None:
+def save_rgb_embeddings(src_folder: str = "./data/10_Demo_Images", dst_file: str = "./data/embeddings/RGB_embeddings.pickle", print_embeddings: bool = False) -> None:
 
     collection = RgbImageEmbeddings()
     
