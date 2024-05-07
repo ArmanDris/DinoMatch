@@ -8,11 +8,12 @@ Start QDrant service:
 1. docker run -p 6333:6333 -p 6334:6334 \
     qdrant/qdrant
 
-2. python3 run.py
+2. python3 run.py (-t)
     - This will encode the images as vectors and and a matching JSON file will be created with each vector's name
     - Then the vector embeddings and their names will be uploaded to QDrant
+    - (-t, --test) will run tests
 
-python3 -m unittest tests/test_embed.py
+python3 -m unittest tests.test_embed
 
 ## Interesting Resources:
 (Article Where the nature DeepWeeds repo comes from:

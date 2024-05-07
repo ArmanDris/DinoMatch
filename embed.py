@@ -1,23 +1,29 @@
-from typing import Dict, Tuple, Optional
+from typing import Dict
 from PIL import Image
 import os
 import pickle
 import numpy as np
 
-class RgbImageEmbeddings():
+class RgbImageEmbedder():
     """
     This class stores a dictionary of RGB image embeddings.
     The image name is they key and the RGB tuple is they value.
     """
-    def __init__(self):
+    def __init__(self, src_folder, dst_file):
         self.data: Dict[str, np.ndarray] = {}
-
-    def add_image(self, name: str, image_path: str) -> None:
-        self.data[name] = self._rgb_encoder(image_path)
+        self.embed_directory_and_save(src_folder, dst_file)
 
     def print(self) -> None:
         for key, value in self.data.items():
             print(f"{key}:{value}")
+
+    def embed_directory_and_save(self, src_folder: str, dst_file: str) -> None:
+        for filename in os.listdir(src_folder):
+            if filename.endswith('.png'):
+                img_path = os.path.join(src_folder, filename)
+                self.data[filename] = self._rgb_encoder(img_path)
+
+        self.save_as(dst_file=dst_file)
 
     def save_as(self, dst_file: str) -> None:
         try:
