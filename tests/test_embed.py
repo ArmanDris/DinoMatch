@@ -8,8 +8,15 @@ import embed
 class TestEmbed(unittest.TestCase):
 
     def setUp(self) -> None:
-        self.collection = embed.RgbImageEmbeddings()
-        self.collection.embed_directory(src_folder="./data/10_Demo_Images")
+        self.temp_out_file = tempfile.NamedTemporaryFile(delete=False)
+        self.collection = embed.RgbImageEmbedder(src_folder="./data/10_Demo_Images", dst_file=self.temp_out_file.name)
+
+    def tearDown(self) -> None:
+        self.temp_out_file.close()
+        try:
+            os.unlink(self.temp_out_file.name)
+        except FileNotFoundError:
+            pass
     
     def test_RgbImageEmbeddings_embed_directory(self):
 
@@ -30,21 +37,11 @@ class TestEmbed(unittest.TestCase):
         np.testing.assert_array_equal(collection.data["10.png"], green_embedding)
 
     def test_RgbImageEmbeddings_save_as(self):
-        with tempfile.NamedTemporaryFile(delete=False) as temp:
-            temp_filename = temp.name
 
-        try:
-            with open(temp_filename, 'wb') as file:
-                pickle.dump(self.collection.data, file)
-            
-            with open(temp_filename, 'rb') as file:
-                loaded_data = pickle.load(file)
-            
-            self.assertTrue(self.collection.data, loaded_data)
+        with open(self.temp_out_file.name, 'rb') as file:
+            loaded_data = pickle.load(file)
         
-        finally:
-            if os.path.exists(temp_filename):
-                os.remove(temp_filename)
+        self.assertTrue(self.collection.data, loaded_data)
 
 if __name__ == "__main__":
     unittest.main()
