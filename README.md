@@ -8,7 +8,7 @@ Start QDrant service:
 1. docker run -p 6333:6333 -p 6334:6334 \
     qdrant/qdrant
 
-2. python3 run.py (-t)
+2. python3 main.py (-t)
     - This will encode the images as vectors and and a matching JSON file will be created with each vector's name
     - Then the vector embeddings and their names will be uploaded to QDrant
     - (-t, --test) will run tests
