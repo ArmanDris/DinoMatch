@@ -5,6 +5,8 @@ import tempfile
 import numpy as np
 import upload_dict_to_qdrant
 import rgb_image_embedder
+from qdrant_client import QdrantClient
+from qdrant_client.models import VectorParams, Distance
 
 class TestUploadDictToQdrant(unittest.TestCase):
 
@@ -35,6 +37,13 @@ class TestUploadDictToQdrant(unittest.TestCase):
             correct_vec = points.pop(payload["file_name"])
             np.testing.assert_array_equal(vec, correct_vec)
         
+    def test_UploadDictToQdrant_constructor(self):
+        # Here we want to make sure qdrant has the vectors
+        client = QdrantClient("http://localhost:6333")
+
+        points, offset = client.scroll(self.uploader.collection_name, limit=10)
+        self.assertIsNone(offset)
+        print(type(points[0]))
 
 if __name__ == "__main__":
     unittest.main()
