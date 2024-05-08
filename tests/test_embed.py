@@ -3,13 +3,13 @@ import os
 import pickle
 import tempfile
 import numpy as np
-import embed
+import rgb_image_embedder
 
 class TestEmbed(unittest.TestCase):
 
     def setUp(self) -> None:
         self.temp_out_file = tempfile.NamedTemporaryFile(delete=False)
-        self.collection = embed.RgbImageEmbedder(src_folder="./data/10_Demo_Images", dst_file=self.temp_out_file.name)
+        self.collection = rgb_image_embedder.RgbImageEmbedder(src_folder="./data/10_Demo_Images", dst_file=self.temp_out_file.name)
 
     def tearDown(self) -> None:
         self.temp_out_file.close()

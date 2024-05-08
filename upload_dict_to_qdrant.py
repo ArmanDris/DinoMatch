@@ -10,7 +10,7 @@ class UploadDictToQdrant:
     
     def __init__(self, src_file: str):
         self.names: list[Dict[str, str]] = []
-        self.list_of_nmpy_vectors: list[np.ndarray] = []
+        self.nmpy_vectors: list[np.ndarray] = []
 
         self._load_dictionary(src_file)
         
@@ -27,13 +27,13 @@ class UploadDictToQdrant:
 
         client.upload_collection(
             collection_name=collection_name,
-            vectors=iter(self.list_of_nmpy_vectors),
+            vectors=iter(self.nmpy_vectors),
             payload=iter(self.names)
         )
 
         print(f" - Uploaded {client.count(collection_name).count} vectors to QDrant")
 
-    def _load_dictionary(self, src_file: str) -> Dict[str, np.ndarray]:
+    def _load_dictionary(self, src_file: str) -> None:
         dict_from_src = {}
 
         try:
@@ -44,4 +44,4 @@ class UploadDictToQdrant:
         
         for key, value, in dict_from_src.items():
             self.names.append({"file_name": key})
-            self.list_of_nmpy_vectors.append(value)
+            self.nmpy_vectors.append(value)
