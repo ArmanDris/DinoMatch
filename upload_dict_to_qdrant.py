@@ -1,7 +1,6 @@
 import numpy as np
 from typing import Dict
 import pickle
-import json
 from qdrant_client import QdrantClient
 from qdrant_client.models import VectorParams, Distance
 
