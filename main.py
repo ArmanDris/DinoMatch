@@ -2,6 +2,7 @@ import argparse
 import unittest
 import rgb_image_embedder
 import upload_dict_to_qdrant
+from Vit_image_embedder import VitImageEmbedder
 
 def run_tests():
     loader = unittest.TestLoader()
@@ -10,11 +11,8 @@ def run_tests():
     runner.run(test_suite)
 
 def main():
-    src_folder = "./data/10_Demo_Images"
-    embeddings_file = "./data/embeddings/RGB_embeddings.pickle"
-
-    rgb_image_embedder.RgbImageEmbedder(src_folder=src_folder, dst_file=embeddings_file)
-    upload_dict_to_qdrant.UploadDictToQdrant(src_file=embeddings_file)
+    src_folder = "./data/CropVsWeedDataset/agri_data/data"
+    VitImageEmbedder(src_folder)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run main or run tests!")
