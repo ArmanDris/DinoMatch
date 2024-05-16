@@ -1,3 +1,8 @@
+if __name__ == "__main__":
+    # Imports do not work when tests run directly
+    print("Error cannot run tests directly, use 'python main.py -t'")
+    return 0
+
 import unittest
 import os
 import pickle
@@ -5,7 +10,7 @@ import tempfile
 import numpy as np
 import rgb_image_embedder
 
-class TestEmbed(unittest.TestCase):
+class TestRgbImageEmbedder(unittest.TestCase):
 
     def setUp(self) -> None:
         self.temp_out_file = tempfile.NamedTemporaryFile(delete=False)
@@ -42,6 +47,3 @@ class TestEmbed(unittest.TestCase):
             loaded_data = pickle.load(file)
         
         self.assertTrue(self.collection.data, loaded_data)
-
-if __name__ == "__main__":
-    unittest.main()

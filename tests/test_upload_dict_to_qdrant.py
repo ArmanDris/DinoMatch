@@ -53,4 +53,4 @@ class TestUploadDictToQdrant(unittest.TestCase):
         self.assertFalse(self.correct_points)
             
 if __name__ == "__main__":
-    unittest.main()
+    print("Error cannot run tests directy, use 'python main.py -t'")
