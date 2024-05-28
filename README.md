@@ -1,6 +1,6 @@
 # DemoImageEmbedder
 
-Right now this is a proof of concept for using a Vector Database as "Memory" for Agrobot
+A python script that uses facebook's dino ViT Embedder to create image embeddings. I plan to make a small flask app and SvelteKit UI to easily run similarity search on the images.
 
 ## Usage:
 
@@ -47,3 +47,5 @@ https://docs.voxel51.com/tutorials/qdrant.html)
 
 (Dandelion vs Radish Dataset: 
 https://www.kaggle.com/datasets/junglepy/weeder-dandelions-vs-radishes/data)
+
+()
