@@ -26,9 +26,9 @@ $green:     #859900;
 -->
 
 <script>
-	
+	import { SampleImages } from '../lib'
 </script>
 
 <main class="w-[70%] h-full my-0 mx-auto">
-	
+	<SampleImages/>
 </main>
