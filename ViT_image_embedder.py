@@ -1,4 +1,4 @@
-import torch, os, pickle
+import torch, os
 import numpy as np
 from PIL import Image
 from qdrant_client import QdrantClient

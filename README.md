@@ -1,6 +1,6 @@
-# DemoImageEmbedder
+# DinoMatch
 
-A python script that uses facebook's dino ViT Embedder to create image embeddings. I plan to make a small flask app and SvelteKit UI to easily run similarity search on the images.
+This image similarity search combines facebook's dino ViT Embedder and QDrant's vector similarity search. There is also a very basic RGB Embedder that I created, it is much worse than the dino model but it works well for understanding how similarity search works in QDrant.
 
 ## Usage:
 
@@ -9,7 +9,7 @@ Start QDrant service:
     qdrant/qdrant
 
 2. python main.py (-t)
-    - This will encode the images as vectors and and a matching JSON file will be created with each vector's name
+    - This will encode the images as vectors and a matching JSON file will be created with each vector's name
     - Then the vector embeddings and their names will be uploaded to QDrant
     - (-t, --test) will run tests
 
@@ -21,6 +21,9 @@ CropVsWeed dataset from:
 https://www.kaggle.com/datasets/ravirajsinh45/crop-and-weed-detection-data-with-bounding-boxes?resource=download
 
 ## Documentation:
+
+VitImageEmbedder(src_folder)
+Given a source folder this class will use facebook's dino-vits to encode each .jpg image as a vector. It will then connect to QDrant and upload each embedding along with some metadata about the image as a payload.
 
 RgbImageEmbedder(src_folder, dst_file)
 Given a source folder and destination file this class will encode each .png image as a numpy vector with its average rgb value [r, g ,b]. The results are stored in a dictionary with the file name being the key and the vector being the value
