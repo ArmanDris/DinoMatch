@@ -1,6 +1,10 @@
 # DinoMatch
 
-![DinoMatch demo](data/Demo.gif)
+<video autoplay controls>
+  <source src="data/Demo1.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
 
 This image similarity search combines facebook's dino ViT Embedder and QDrant's vector similarity search. There is also a rudimentary RGB Embedder  that is useful for understanding how similarity search works in QDrant.
 
