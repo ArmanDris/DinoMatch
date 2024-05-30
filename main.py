@@ -1,10 +1,9 @@
 import argparse
 import unittest
-import rgb_image_embedder
-import upload_dict_to_qdrant
-from ViT_image_embedder import VitImageEmbedder
+from utils.ViT_image_embedder import VitImageEmbedder
+from api import create_app
 
-images_folder = "./data/CropVsWeedDataset/agri_data/data" 
+images_folder = "./data/CropVsWeedDataset/agri_data/data"
 
 def run_tests():
     loader = unittest.TestLoader()
@@ -13,7 +12,9 @@ def run_tests():
     runner.run(test_suite)
 
 def main():
-    VitImageEmbedder(images_folder)
+    # VitImageEmbedder(images_folder)
+    app = create_app()
+    app.run(debug=True)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run main or run tests!")

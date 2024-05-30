@@ -2,8 +2,8 @@ import unittest
 import os
 import tempfile
 import numpy as np
-import upload_dict_to_qdrant
-import rgb_image_embedder
+import utils.upload_dict_to_qdrant as upload_dict_to_qdrant
+import utils.rgb_image_embedder as rgb_image_embedder
 from qdrant_client import QdrantClient
 
 class TestUploadDictToQdrant(unittest.TestCase):

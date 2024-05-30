@@ -8,7 +8,7 @@ import os
 import pickle
 import tempfile
 import numpy as np
-import rgb_image_embedder
+import utils.rgb_image_embedder as rgb_image_embedder
 
 class TestRgbImageEmbedder(unittest.TestCase):
 
