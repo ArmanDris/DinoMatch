@@ -10,8 +10,9 @@ This image similarity search combines facebook's dino ViT Embedder and QDrant's 
  - `$ docker pull qdrant/qdrant`
  - `$ docker run -p 6333:6333 -p 6334:6334 qdrant/qdrant`
 
-2. Create conda environment using environment.yml ([install conda here](https://docs.anaconda.com/free/miniconda/))
+2. Create & activate conda environment using environment.yml ([install conda here](https://docs.anaconda.com/free/miniconda/))
  - `$ conda env create --file environment.yml`
+ - `$ conda activate torch`
 
 3. Build the UI
  - `$ cd ui`
