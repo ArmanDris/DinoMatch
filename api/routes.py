@@ -19,7 +19,7 @@ def getSample():
 
     for filename in os.listdir(src_folder):
         if filename.endswith(".jpeg"):
-            if random.randint(1, 10) != 3:
+            if random.randint(1, 100) != 3:
                 continue
             with open(os.path.join(src_folder, filename), "rb") as image:
                 encoded_string = base64.b64encode(image.read()).decode("utf-8")

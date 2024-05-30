@@ -4,12 +4,12 @@
     import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
 
     let images = {}
-
     let similar_images = {}
-
     let selected_image = "agri_0_9266.jpeg"
 
     async function getSampleImages() {
+        similar_images = {}
+
         fetch("http://localhost:5000/getSample")
             .then((response) => response.json())
             .then((data) => {
@@ -39,23 +39,25 @@
     });
 </script>
 
-<main class="w-full h-full">
-    <h1 class="text-black font-serif text-[44px]">Sample Images:</h1>
+<main class="w-full min-h-[90vh]">
+    <div class="mt-[5em]" />
     <div class="flex items-center justify-between">
         {#if Object.keys(images).length > 0}
             {#each Object.entries(images) as [key, value]}
-                <img on:click={() => selected_image=key} src={"data:image/jpeg;base64," + value} alt={key}/>
+                <button type="button" on:click={() => selected_image=key} aria-label="Select image with key {key}">
+                    <img src={"data:image/jpeg;base64," + value} alt={key} class:selected={selected_image === key}/>
+                </button>
             {/each}
         {/if}
     </div>
-    <button class="bg-[#d3368240] text-[#d33682]" on:click={getSampleImages}>Get New Sample<FontAwesomeIcon icon={faArrowsRotate} class="w-[1em] h-[1em] px-2 inline" /></button>
-    <button class="bg-[#85990040] text-[#859900]" on:click={runPrediction}>Find Similar Images<FontAwesomeIcon icon={faForward} class="w-[1em] h-[1em] px-2 inline" /></button>
+    <button class="bg-[#d3368240] text-[#d33682] action" on:click={getSampleImages}>Get New Sample<FontAwesomeIcon icon={faArrowsRotate} class="w-[1em] h-[1em] px-2 inline" /></button>
+    <button class="bg-[#85990040] text-[#859900] action" on:click={runPrediction}>Run Similarity Search<FontAwesomeIcon icon={faForward} class="w-[1em] h-[1em] px-2 inline" /></button>
 
     <div class="flex justify-between flex-wrap p-6">
         {#if Object.keys(similar_images).length > 0}
             {#each Object.entries(similar_images) as [key, value]}
                 <div>
-                    <p>Similarity: {value[0]}</p>
+                    <p><span class="text-black">Similarity:</span> {value[0]}</p>
                     <img src={"data:image/jpeg;base64," + value[1]} alt={key}>
                 </div>
             {/each}
@@ -67,14 +69,19 @@
     img {
         width: 224px;
         height: 224px;
+        transition: 500ms;
     }
 
-    button {
+    .action {
         font-family: sans-serif;
         font-weight: bold;
         padding: 14px;
         margin-right: 14px;
-        margin-top: 14px;
+        margin-top: 20px;
         border-radius: 14px;
+    }
+
+    .selected {
+        border: 5px solid red;
     }
 </style>

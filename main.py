@@ -12,9 +12,9 @@ def run_tests():
     runner.run(test_suite)
 
 def main():
-    # VitImageEmbedder(images_folder)
+    VitImageEmbedder(images_folder)
     app = create_app()
-    app.run(debug=True)
+    app.run()
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run main or run tests!")

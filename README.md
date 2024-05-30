@@ -1,19 +1,29 @@
 # DinoMatch
 
-This image similarity search combines facebook's dino ViT Embedder and QDrant's vector similarity search. There is also a very basic RGB Embedder that I created, it is much worse than the dino model but it works well for understanding how similarity search works in QDrant.
+![DinoMatch demo](data/Demo.gif)
 
-## Usage:
+This image similarity search combines facebook's dino ViT Embedder and QDrant's vector similarity search. There is also a rudimentary RGB Embedder  that is useful for understanding how similarity search works in QDrant.
 
-Start QDrant service:
-1. docker run -p 6333:6333 -p 6334:6334 \
-    qdrant/qdrant
+## Getting Started:
 
-2. python main.py (-t)
-    - This will encode the images as vectors and a matching JSON file will be created with each vector's name
-    - Then the vector embeddings and their names will be uploaded to QDrant
-    - (-t, --test) will run tests
+1. Pull & run the QDrant docker container ([more info here](https://qdrant.tech/documentation/quick-start/))
+ - `$ docker pull qdrant/qdrant`
+ - `$ docker run -p 6333:6333 -p 6334:6334 qdrant/qdrant`
 
-python3 -m unittest tests.test_embed
+2. Create conda environment using environment.yml ([install conda here](https://docs.anaconda.com/free/miniconda/))
+ - `$ conda env create --file environment.yml`
+
+3. Build the UI
+ - `$ cd ui`
+ - `$ npm install`
+ - `$ npm run build`
+
+4. Run the script
+ - `$ python main.py`
+    - This will use the vision transformer to create vector embeddings for all images in the weeds dataset
+    - Then the vector embeddings and their names will be uploaded to the local QDrant service
+    - Finally the flask server will start and you can go to [localhost:5000](http://localhost:5000) to try out DinoMatch!
+    - (If you pass -t/--test to main.py then it will run all tests instead)
 
 ## Sources:
 
@@ -31,7 +41,7 @@ Given a source folder and destination file this class will encode each .png imag
 UploadDictToQdrant(src_file)
 Will load a dictionary from src_file and upload the values in the dictionary as the vectors and the key as the 'file name' payload.
 
-So to use these two together you would:
+Using RgbImageEmbedder and UploadDictToQdrant together would look like:
     src_folder = "./data/10_Demo_Images"
     embeddings_file = "./data/embeddings/RGB_embeddings.pickle"
 
@@ -50,5 +60,3 @@ https://docs.voxel51.com/tutorials/qdrant.html)
 
 (Dandelion vs Radish Dataset: 
 https://www.kaggle.com/datasets/junglepy/weeder-dandelions-vs-radishes/data)
-
-()

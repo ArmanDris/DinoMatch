@@ -55,6 +55,3 @@ class VitImageEmbedder:
         with torch.no_grad():
             outputs = self.model(**inputs).last_hidden_state.mean(dim=1).cpu().numpy()
         return outputs.squeeze(0)
-
-# This script creates image embeddings for each image in the dataset and uploads them to QDrant a vector database.
-# From there we can preform similarity search. Lets find images that are most similar to 
