@@ -36,12 +36,11 @@ class VitImageEmbedder:
                 points=[models.PointStruct(
                     id=i,
                     vector=value,
-                    payload={"file_name":key, "vector":value.tolist()}
+                    payload={"file_name":key}
                 )]
             )
             i+=1
         print(f" - uploaded {client.count(self.collection_name).count} embeddings to QDrant")
-
     def _embed_folder(self, src_folder):
         for filename in os.listdir(src_folder):
             if filename.endswith(".jpeg"):
