@@ -12,7 +12,7 @@ def run_tests():
     runner.run(test_suite)
 
 def main():
-    VitImageEmbedder(images_folder)
+    VitImageEmbedder(images_folder, "VitWeedEmbeddings")
     app = create_app()
     app.run()
 

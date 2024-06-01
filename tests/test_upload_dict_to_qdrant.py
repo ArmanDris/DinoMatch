@@ -56,6 +56,3 @@ class TestUploadDictToQdrant(unittest.TestCase):
 
         # All dictionary elements should be popped
         self.assertFalse(self.correct_points)
-            
-if __name__ == "__main__":
-    print("Error cannot run tests directy, use 'python main.py -t'")
