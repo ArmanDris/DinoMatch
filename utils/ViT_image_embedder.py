@@ -6,6 +6,7 @@ from qdrant_client import models
 from transformers import ViTImageProcessor, ViTModel
 
 class VitImageEmbedder:
+    
     def __init__(self, src_folder: str):
         self.data = {}
         self.collection_name = "VitWeedEmbeddings"
@@ -16,9 +17,9 @@ class VitImageEmbedder:
         self.model = ViTModel.from_pretrained('facebook/dino-vits16').to(self.device)
 
         self._embed_folder(src_folder)
-        self.upload_to_qdrant()
-    
-    def upload_to_qdrant(self):
+        self._upload_to_qdrant()
+
+    def _upload_to_qdrant(self):
         client = QdrantClient("http://localhost:6333")
 
         if client.collection_exists(self.collection_name):
@@ -28,7 +29,7 @@ class VitImageEmbedder:
             collection_name=self.collection_name, 
             vectors_config=models.VectorParams(size=384, distance=models.Distance.COSINE)
         )
-        
+
         i = 0
         for key, value in self.data.items():
             client.upsert( 
@@ -41,6 +42,7 @@ class VitImageEmbedder:
             )
             i+=1
         print(f" - uploaded {client.count(self.collection_name).count} embeddings to QDrant")
+
     def _embed_folder(self, src_folder):
         for filename in os.listdir(src_folder):
             if filename.endswith(".jpeg"):
