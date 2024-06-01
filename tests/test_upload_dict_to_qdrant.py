@@ -1,3 +1,9 @@
+import sys
+if __name__ == "__main__":
+    # Imports do not work when tests run directly
+    print("Error: cannot run tests directly, use 'python main.py -t'")
+    sys.exit(0)
+
 import unittest
 import os
 import tempfile
@@ -47,10 +53,6 @@ class TestUploadDictToQdrant(unittest.TestCase):
         for record in records:
             correct_vec = self.correct_points.pop(record.payload["file_name"])
             np.testing.assert_array_equal(record.vector, correct_vec)
-            print(f"Popped {record.payload['file_name']}, {record.vector}, {correct_vec}")
 
         # All dictionary elements should be popped
         self.assertFalse(self.correct_points)
-            
-if __name__ == "__main__":
-    print("Error cannot run tests directy, use 'python main.py -t'")

@@ -1,7 +1,8 @@
+import sys
 if __name__ == "__main__":
     # Imports do not work when tests run directly
-    print("Error cannot run tests directly, use 'python main.py -t'")
-    return 0
+    print("Error: cannot run tests directly, use 'python main.py -t'")
+    sys.exit(0)
 
 import unittest
 import os
