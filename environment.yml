@@ -5,6 +5,14 @@ channels:
 dependencies:
   - python=3.12.3
   - pytorch::pytorch
-  - torchaudio
+  - conda-forge::transformers
+  - conda-forge::flask
+  - conda-forge::flask_cors
+  - conda-forge::numpy
+  - conda-forge::pillow
+#  - torchaudio
   - torchvision
   - qdrant-client
+  - pip
+  - pip:
+    - qdrant-client
