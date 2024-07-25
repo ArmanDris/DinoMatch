@@ -36,7 +36,7 @@ def getSimilar():
     json = request.get_json()
     filename = json["file_name"]
 
-    client = QdrantClient("http://localhost:6333")
+    client = QdrantClient("http://qdrant:6333")
 
     point_tuple = client.scroll(
         collection_name="VitWeedEmbeddings",

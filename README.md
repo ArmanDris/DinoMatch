@@ -23,7 +23,7 @@ This image similarity search combines facebook's dino ViT Embedder and QDrant's 
  - `$ python main.py`
     - This will use the vision transformer to create vector embeddings for all images in the weeds dataset
     - Then the vector embeddings and their names will be uploaded to the local QDrant service
-    - Finally the flask server will start and you can go to [localhost:5000](http://localhost:5000) to try out DinoMatch!
+    - Finally the flask server will start and you can go to [localhost:8010](http://localhost:8010) to try out DinoMatch!
     - (If you pass -t/--test to main.py then it will run all tests instead)
 
 ## Sources:

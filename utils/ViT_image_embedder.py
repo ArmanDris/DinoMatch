@@ -21,7 +21,7 @@ class VitImageEmbedder:
         self._upload_to_qdrant()
 
     def _upload_to_qdrant(self):
-        client = QdrantClient("http://localhost:6333")
+        client = QdrantClient("http://qdrant:6333")
 
         if client.collection_exists(self.collection_name):
             client.delete_collection(self.collection_name)

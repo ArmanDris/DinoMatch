@@ -14,7 +14,7 @@ def run_tests():
 def main():
     VitImageEmbedder(images_folder, "VitWeedEmbeddings")
     app = create_app()
-    app.run()
+    app.run(host='0.0.0.0', port=8010)
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run main or run tests!")
