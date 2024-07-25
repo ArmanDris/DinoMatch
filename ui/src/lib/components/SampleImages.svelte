@@ -10,7 +10,7 @@
     async function getSampleImages() {
         similar_images = {}
 
-        fetch("http://localhost:8010/getSample")
+        fetch("http://dinomatch.drismir.ca/getSample")
             .then((response) => response.json())
             .then((data) => {
                 images = {...data};
@@ -20,7 +20,7 @@
     }
 
     async function runPrediction() {
-        fetch("http://localhost:8010/getSimilar", {
+        fetch("http://dinomatch.drismir.ca/getSimilar", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
