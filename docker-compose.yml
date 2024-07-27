@@ -4,6 +4,7 @@ services:
     ports:
       - "6333:6333"
       - "6334:6334"
+    restart: always
 
   app:
     build: .
@@ -12,3 +13,4 @@ services:
       - "8010:8010"
     depends_on:
       - qdrant
+    restart: always
