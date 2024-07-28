@@ -2,6 +2,8 @@
 
 ![DinoMatch demo](data/Demo.gif)
 
+[Check it out here](https://dinomatch.drismir.ca)
+
 This image similarity search combines facebook's dino ViT Embedder and QDrant's vector similarity search. There is also a rudimentary RGB Embedder  that is useful for understanding how similarity search works in QDrant.
 
 ## Getting Started:
